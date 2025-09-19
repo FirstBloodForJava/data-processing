@@ -1,0 +1,54 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'org.springframework.boot' version '2.7.18' apply false
+    id "io.spring.dependency-management" version "1.1.4" apply false
+}
+
+group = 'com.oycm'
+version = ''
+
+allprojects {
+    // 插件
+    apply plugin: 'idea'
+    apply plugin: 'java'
+    // api 引入依赖需要
+    apply plugin: 'java-library'
+    // maven 插件
+    apply plugin: 'maven-publish'
+
+    group = 'com.oycm'
+    version = '1.0'
+
+    ext {
+        springBootVersion = "2.7.18"
+        lombokVersion = "1.18.30"
+    }
+
+    repositories {
+        maven {
+            url 'https://maven.aliyun.com/repository/public/'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/central'
+        }
+        mavenLocal()
+        mavenCentral()
+    }
+}
+
+subprojects {
+    apply plugin: "io.spring.dependency-management"
+
+    // 指定全局依赖
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:2.7.18"
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:2021.0.9"
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}

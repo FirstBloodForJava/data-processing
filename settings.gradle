@@ -1,0 +1,10 @@
+// 指定插件仓库地址
+pluginManagement {
+    repositories {
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+    }
+}
+rootProject.name = 'data-processing'
+include 'dp-xxl-job-executor'
+
