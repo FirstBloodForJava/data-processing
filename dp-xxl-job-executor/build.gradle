@@ -1,0 +1,17 @@
+group = 'com.oycm'
+version = ''
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
+
+    implementation("com.xuxueli:xxl-job-core:2.5.0")
+    implementation("org.springframework.boot:spring-boot-starter-web")
+
+}
+

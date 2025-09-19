@@ -1,0 +1,14 @@
+spring:
+  main:
+    web-application-type: none
+xxl:
+  job:
+    admin:
+      addresses: http://127.0.0.1:8080/xxl-job-admin
+    executor:
+      appName: dp-xxl-job-executor
+      address: ""
+      ip: 127.0.0.1
+      port: 9999
+      logPath: jobHandlers
+      logRetentionDays: 30
