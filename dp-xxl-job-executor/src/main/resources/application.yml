@@ -12,3 +12,8 @@ xxl:
       port: 9999
       logPath: jobHandlers
       logRetentionDays: 30
+dp:
+  config:
+    master: spark://127.0.0.1:7077
+    relativePath: ""
+    defaultJobConf: --total-executor-cores 4 --driver-memory 2G --executor-memory 2G

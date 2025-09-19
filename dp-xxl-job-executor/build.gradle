@@ -10,6 +10,9 @@ dependencies {
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
 
+    // 元数据生成依赖
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
     implementation("com.xuxueli:xxl-job-core:2.5.0")
     implementation("org.springframework.boot:spring-boot-starter-web")
 
