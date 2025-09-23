@@ -1,0 +1,10 @@
+group = 'com.oycm'
+version = ''
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api ("org.apache.spark:spark-sql_2.12:3.5.6")
+}

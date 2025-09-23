@@ -8,3 +8,7 @@ pluginManagement {
 rootProject.name = 'data-processing'
 include 'dp-xxl-job-executor'
 
+// 基础类模块
+include 'dp-basic'
+// spark 执行模块
+include 'dp-spark'

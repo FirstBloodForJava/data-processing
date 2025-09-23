@@ -7,6 +7,9 @@ repositories {
 
 dependencies {
 
+    // 基础类依赖
+    implementation project(":dp-basic")
+
     compileOnly "org.projectlombok:lombok"
     annotationProcessor "org.projectlombok:lombok"
 
