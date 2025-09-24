@@ -80,5 +80,5 @@ public class JdbcConfig {
     /**
      * 是否使用自定义 jdbc 源
      */
-    private boolean isUseCusJdbc = false;
+    private boolean UseCusJdbc = false;
 }

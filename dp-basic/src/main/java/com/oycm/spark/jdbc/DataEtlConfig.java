@@ -15,7 +15,7 @@ public class DataEtlConfig {
     /**
      * 是否增加固定修改时间列 LAST_UPDATE
      */
-    private boolean isUseUpdateCol = false;
+    private boolean useUpdateCol = false;
 
     /**
      * 是否将 逻辑&物理 计划打印
