@@ -26,5 +26,6 @@ dependencies {
 
     implementation("org.springframework.boot:spring-boot-starter-web")
 
+    api("com.alibaba:fastjson:2.0.57")
 }
 
