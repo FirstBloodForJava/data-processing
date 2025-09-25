@@ -5,7 +5,7 @@ package com.oycm.enums;
  */
 public enum SparkJobType {
 
-    SimpleSqlETL("SimpleSqlETL", "libs/sparkProgram/ap-spark.jar", "com.oycm.etl.v1.SimpleSqlEtlJob"),
+    SimpleSqlETL("SimpleSqlETL", "libs/sparkProgram/dp-spark.jar", "com.oycm.etl.v1.SimpleSqlEtlJob"),
 
     ;
 
@@ -42,4 +42,13 @@ public enum SparkJobType {
         return clazz;
     }
 
+    public static SparkJobType getByName(String name) {
+        for (SparkJobType value : SparkJobType.values()) {
+            if (value.name().equals(name) || value.type.equals(name)) {
+                return value;
+            }
+        }
+
+        return null;
+    }
 }
