@@ -1,3 +1,6 @@
+plugins {
+    id "org.springframework.boot"
+}
 group = 'com.oycm'
 version = ''
 
@@ -5,6 +8,8 @@ repositories {
     mavenCentral()
 }
 
+// 查询本模块运行时依赖情况
+// .\gradlew.bat :dp-xxl-job-executor:dependencies --configuration runtimeClasspath
 dependencies {
 
     // 基础类依赖
@@ -16,7 +21,9 @@ dependencies {
     // 元数据生成依赖
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 
+    // xxl-job 执行器依赖
     implementation("com.xuxueli:xxl-job-core:2.5.0")
+
     implementation("org.springframework.boot:spring-boot-starter-web")
 
 }
