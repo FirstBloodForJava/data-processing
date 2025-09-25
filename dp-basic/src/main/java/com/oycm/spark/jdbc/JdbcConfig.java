@@ -67,7 +67,7 @@ public class JdbcConfig {
 
 
     /**
-     * 使用哪种连接生产者, 不通过默认的 DriverManager 创建连接
+     * 使用哪种模式 jdbc, 不是普通用户名+密码连接方式
      * 默认支持: DB2(db2); MariaDB(mariadb); MS Sql(mssql); Oracle(oracle); PostgreSQL(postgres)
      * 见 spark-sql 依赖 META-INF/services/org.apache.spark.sql.jdbc.JdbcConnectionProvider
      */

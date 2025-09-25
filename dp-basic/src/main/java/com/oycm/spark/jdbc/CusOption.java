@@ -17,6 +17,11 @@ public class CusOption {
     public static final String CUS_MODE = "cusMode";
 
     /**
+     * 普通 账号密码 连接认证模式
+     */
+    public static final String CONNECTION_PROVIDER_BASIC = "basic";
+
+    /**
      * spark oracle connectionProvider 配置项
      */
     public static final String CONNECTION_PROVIDER_ORACLE = "oracle";
