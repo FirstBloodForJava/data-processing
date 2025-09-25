@@ -1,10 +1,94 @@
-group = 'com.oycm'
-version = ''
+plugins {
+    id "java-library"
+
+    id "scala"
+    // 构建 jar 中添加运行时需要的依赖, 版本需要和 gradle 兼容
+    id "com.github.johnrengelman.shadow" version "8.1.1"
+}
+group = "com.oycm"
+version = ""
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    api ("org.apache.spark:spark-sql_2.12:3.5.6")
+
+    compileOnly "org.projectlombok:lombok"
+    annotationProcessor "org.projectlombok:lombok"
+
+    implementation project(":dp-basic")
+
+    // 自定义 jdbc 源需要
+    api("org.apache.spark:spark-sql_2.12:3.5.6")
+
+    api("com.alibaba:fastjson:2.0.57")
+
+    implementation("org.scala-lang:scala-library:2.12.10")
+
+    // 本地启动依赖
+    // 日志
+    api("org.slf4j:slf4j-api:2.0.7")
+
+
+    // 数据库
+    api("com.oracle.ojdbc:ojdbc8:19.3.0.0")
+    api("mysql:mysql-connector-java:8.0.18")
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+tasks.withType(ScalaCompile) {
+    options.encoding = "UTF-8"
+}
+
+// 解决 java main 方法运行 引用 scala 代码不能运行问题
+sourceSets {
+    main {
+        scala {
+            srcDirs = ["src/main/scala", "src/main/java"]
+        }
+        java {
+            srcDirs = []
+        }
+    }
+    test {
+        scala {
+            srcDirs = ["src/test/scala", "src/test/java"]
+        }
+        java {
+            srcDirs = []
+        }
+    }
+}
+
+shadowJar {
+    // jar 名称相关配置
+    archiveBaseName.set("dp-spark")
+    archiveVersion.set("")
+    archiveClassifier.set("")
+    dependencies {
+        // jar 中添加的源 class 依赖
+        include(project(":dp-basic"))
+        include(dependency("com.alibaba:fastjson:2.0.57"))
+    }
+}
+
+// 查询本模块运行时依赖情况
+// .\gradlew.bat :dp-spark:dependencies --configuration runtimeClasspath
+// 会打印其它和环境依赖信息
+task showDependencies {
+    group = 'help'
+    description = '显示项目依赖'
+
+    dependsOn tasks.named('dependencies')
+
+    doFirst {
+        // 无用
+        project.gradle.startParameter.setProjectProperties(
+                ['configuration': 'runtimeClasspath']
+        )
+    }
 }
