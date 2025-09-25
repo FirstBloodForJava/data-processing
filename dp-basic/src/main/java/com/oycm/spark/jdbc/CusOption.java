@@ -15,4 +15,14 @@ public class CusOption {
      * 自定义写入模式
      */
     public static final String CUS_MODE = "cusMode";
+
+    /**
+     * spark oracle connectionProvider 配置项
+     */
+    public static final String CONNECTION_PROVIDER_ORACLE = "oracle";
+
+    /**
+     * spark Postgres
+     */
+    public static final String CONNECTION_PROVIDER_POSTGRES = "postgres";
 }
