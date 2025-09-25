@@ -1,0 +1,2 @@
+# 注册自定的数据源
+org.apache.spark.sql.execution.datasources.jdbc.CusJdbcRelationProvider
