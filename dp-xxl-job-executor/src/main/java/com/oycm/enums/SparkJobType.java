@@ -5,7 +5,7 @@ package com.oycm.enums;
  */
 public enum SparkJobType {
 
-    SimpleSqlETL("SimpleSqlETL", "libs/sparkProgram/dp-spark.jar", "com.oycm.etl.v1.SimpleSqlEtlJob"),
+    SimpleSqlETL("SimpleSqlETL", "lib/sparkProgram/dp-spark.jar", "com.oycm.etl.v1.SimpleSqlEtlJob"),
 
     ;
 
