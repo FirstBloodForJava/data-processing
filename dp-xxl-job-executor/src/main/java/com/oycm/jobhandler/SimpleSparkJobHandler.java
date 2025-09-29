@@ -91,6 +91,7 @@ public class SimpleSparkJobHandler extends IJobHandler {
             } else {
                 cmd = new String[]{"bash", "-c", command};
             }
+            log.info(command);
             XxlJobHelper.log("spark job submit {}", command);
 
             Process process;
@@ -98,7 +99,7 @@ public class SimpleSparkJobHandler extends IJobHandler {
                 process = new ProcessBuilder(cmd).redirectErrorStream(true).start();
                 // todo 考虑异步读取日志
                 try (InputStream in = process.getInputStream()) {
-                    boolean isSucceed = FileUtil.xxlLog(in);
+                    boolean isSucceed = FileUtil.xxlLog(in, XxlJobContext.getXxlJobContext());
                     if (!isSucceed) {
                         XxlJobHelper.handleFail("read spark log error!");
                     }

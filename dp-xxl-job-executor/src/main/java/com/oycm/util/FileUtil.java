@@ -1,6 +1,8 @@
 package com.oycm.util;
 
+import com.xxl.job.core.context.XxlJobContext;
 import com.xxl.job.core.context.XxlJobHelper;
+import com.xxl.job.core.log.XxlJobFileAppender;
 
 import java.io.*;
 import java.util.HashSet;
@@ -56,11 +58,11 @@ public class FileUtil {
         return String.join(",", jarPathSet);
     }
 
-    public static Boolean xxlLog(InputStream inputStream) {
+    public static Boolean xxlLog(InputStream inputStream, XxlJobContext xxlJobContext) {
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
-                XxlJobHelper.log(line);
+                XxlJobFileAppender.appendLog(xxlJobContext.getJobLogFileName(), line);
             }
             return true;
         } catch (IOException e) {
