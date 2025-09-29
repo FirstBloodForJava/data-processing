@@ -15,5 +15,5 @@ xxl:
 dp:
   config:
     master: spark://127.0.0.1:7077
-    relativePath: ""
+    relativePath: spark-3.5.6
     defaultJobConf: --total-executor-cores 4 --driver-memory 2G --executor-memory 2G
