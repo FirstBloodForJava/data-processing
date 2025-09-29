@@ -49,7 +49,7 @@ public class SimpleSqlEtlJob {
         SparkSession spark = SparkSession.builder()
                 .appName("SimpleSqlEtlJob-" + jobId)
                 .config("spark.sql.codegen.wholeStage", true)
-                .master("local[2]")
+                //.master("local[2]")
                 .getOrCreate();
 
         AtomicLong writeCount = new AtomicLong(0L);
