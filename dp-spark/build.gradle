@@ -73,6 +73,8 @@ shadowJar {
         // jar 中添加的源 class 依赖
         include(project(":dp-basic"))
         include(dependency("com.alibaba:fastjson:2.0.57"))
+        include(dependency("com.alibaba.fastjson2:fastjson2-extension:2.0.57"))
+        include(dependency("com.alibaba.fastjson2:fastjson2:2.0.57"))
     }
 }
 
