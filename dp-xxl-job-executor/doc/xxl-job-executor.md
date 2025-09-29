@@ -1,4 +1,6 @@
-**dp-xxl-job-exeutor.jar 启动 shell 脚本**
+## dp-xxl-job-executor 启动脚本
+
+**dp-xxl-job-executor.jar 启动 shell 脚本**
 
 ~~~bash
 #!/bin/bash
@@ -118,6 +120,10 @@ exit 0
 
 
 
+## xxl-job 调用参数格式
+
+
+
 **xxl-job 参数 json 格式，xxl_job_info 字段 executor_param 需要扩容**
 
 ~~~json
@@ -148,5 +154,42 @@ exit 0
         "updateUniqueKey": "ID"
     }
 }
+
+~~~
+
+
+
+## linux 命令行测试 spark 命令
+
+~~~bash
+./spark-3.5.6/bin/spark-submit \
+--class com.oycm.etl.v1.SimpleSqlEtlJob \
+--master spark://hostname:7077 \
+--total-executor-cores 4 --driver-memory 2G --executor-memory 2G \
+--jars lib/Oracle/ojdbc8-19.3.0.0.jar \
+lib/sparkProgram/dp-spark.jar \
+jobId param/spark/temp-jobId-timestamp.json
+
+bash -c "
+./spark-3.5.6/bin/spark-submit
+--class com.oycm.etl.v1.SimpleSqlEtlJob
+--master spark://hostname:7077
+--total-executor-cores 4 --driver-memory 2G --executor-memory 2G
+--jars lib/Oracle/ojdbc8-19.3.0.0.jar
+lib/sparkProgram/dp-spark.jar
+jobId param/spark/temp-jobId-timestamp.json
+"
+
+~~~
+
+
+
+## Windows
+
+需要移动依赖的 jar 和 启动 jar 移动到 spark 目录处
+
+~~~bash
+bin\spark-submit.cmd --class com.oycm.etl.v1.SimpleSqlEtlJob --master local[2] --total-executor-cores 4 --driver-memory 2G --executor-memory 2G --jars lib/Oracle/ojdbc8-19.3.0.0.jar lib/sparkProgram/dp-spark.jar T0001 SimpleSparkJobParam.json
+
 ~~~
 
